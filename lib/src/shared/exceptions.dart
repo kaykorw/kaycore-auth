@@ -1,5 +1,3 @@
-part of 'http_adapter.dart';
-
 abstract class ApiError extends KaycoreAuthError {
   const ApiError([super.message]);
 }
@@ -10,15 +8,19 @@ class HttpFailure extends ApiError {
   HttpFailure({required this.statusCode, String? message}) : super(message);
 
   @override
-  String toString() => 'Http Status: $statusCode \nHttp Error: $message)';
+  String toString() => 'Http Status: $statusCode \nHttp Error: $message';
 }
 
 class JsonDecodeException extends ApiError {
   const JsonDecodeException([super.message]);
 }
 
-class JsonDeserializeException extends ApiError {
-  const JsonDeserializeException([super.message]);
+abstract class KaycoreAuthError implements Exception {
+  final String? message;
+  const KaycoreAuthError([this.message]);
+
+  @override
+  String toString() => '$message';
 }
 
 class UnhandledException extends ApiError {
