@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:kaycore_auth/kaycore_auth.dart';
-import 'package:kaycore_auth/src/shared/http_adapter.dart';
 import 'package:test/test.dart';
 
 void main() {
