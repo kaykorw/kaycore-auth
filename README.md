@@ -1,39 +1,11 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+<p align="center">
+  <a href="http://kayko.rw/" target="blank"><img src="https://res.cloudinary.com/kayko/image/upload/v1632235389/site/LinkedIn_Header_3x_jnzphy.png" alt="KAYKO Logo" /></a>
+</p>
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Description
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+At KAYKO, we build digital tools to help SMEs simplify retail operations and deliver remarkable customer experiences
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This project’s main objective is to develop a POS software offering context-appropriate features, including an intuitive point of sale to ease cash flow tracking, customer relation management, real-time reporting, e-commerce integrations, as well as expert advice & support.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+The first and most important feature of the product is a cloud-based Point Of Sale software that includes inventory management, insightful analytics, sales reporting, tax and invoice tracking which are all tailored to ease bookkeeping for businesses on a daily basis with no hassle. The POS user experience is tailored to streamline retail operations by automating the transaction process and tracking important sales data.
