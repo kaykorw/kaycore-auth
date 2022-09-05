@@ -1,7 +1,7 @@
 import 'package:kaycore_auth/kaycore_auth.dart';
 
 Future<void> main() async {
-  var auth = KaycoreAuth();
+  var auth = KaycoreAuth(environment: Environment.staging);
 
   var confirmPhoneNumberOtp = await auth.confirmPhoneNumberOtp(
     identifier: 'kevin@kayko.rw',

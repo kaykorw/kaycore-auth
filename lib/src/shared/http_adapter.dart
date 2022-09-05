@@ -1,23 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:kaycore_auth/kaycore_auth.dart';
 import 'package:kaycore_auth/src/shared/exception.dart';
 
 part 'http_exception.dart';
-
-enum Environment {
-  production,
-  staging;
-
-  String get authority {
-    switch (this) {
-      case Environment.production:
-        return 'api.kayko.rw';
-      case Environment.staging:
-        return 'staging.kayko.rw';
-    }
-  }
-}
 
 class HttpAdapter {
   final http.Client _client;

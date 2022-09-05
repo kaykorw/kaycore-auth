@@ -1,8 +1,11 @@
 part of kaycore_auth;
 
 class KaycoreAuth {
-  const KaycoreAuth();
+  final Environment environment;
 
+  const KaycoreAuth({required this.environment});
+
+  /// Return
   Future<dynamic> confirmPhoneNumberOtp({
     required String identifier,
     required String otp,

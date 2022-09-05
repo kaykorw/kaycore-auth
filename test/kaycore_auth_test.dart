@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:kaycore_auth/kaycore_auth.dart';
+import 'package:kaycore_auth/src/shared/http_adapter.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Auth Tests', () {
-    final auth = KaycoreAuth();
+    final auth = KaycoreAuth(environment: Environment.staging);
 
     test('Local Sign In With Email', () {
       expect(
