@@ -1,16 +1,17 @@
+import 'dart:async';
+
 import 'package:kaycore_auth/kaycore_auth.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
+  group('Auth Tests', () {
+    final auth = KaycoreAuth();
 
-    setUp(() {
-      // Additional setup goes here.
-    });
-
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('Local Sign In With Email', () {
+      expect(
+          auth.localSignInWithEmail(
+              identifier: 'kevin@kayko.rw', password: '123'),
+          Future<dynamic>(() => UnimplementedError()));
     });
   });
 }

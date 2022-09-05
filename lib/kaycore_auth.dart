@@ -1,8 +1,7 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+// Copyright 2022 Kayko Group. All rights reserved.
+
 library kaycore_auth;
 
-export 'src/kaycore_auth_base.dart';
+import 'package:kaycore_auth/src/shared/http_adapter.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+part 'src/kaycore_auth.dart';
