@@ -3,7 +3,7 @@ part of kaycore_auth;
 class KaycoreAuth {
   final Environment environment;
 
-  const KaycoreAuth({required this.environment});
+  KaycoreAuth({required this.environment});
 
   /// Return
   Future<dynamic> confirmPhoneNumberOtp({
@@ -32,7 +32,15 @@ class KaycoreAuth {
 
   Future<dynamic> forgetPassword({required String identifier}) async {
     try {
-      return UnimplementedError('forgetPassword');
+      final body = <String, Object>{
+        'identifier': identifier,
+      };
+
+      return post(
+        environment: environment,
+        path: '/auth/password/forgot',
+        body: body,
+      );
     } catch (error) {
       UnhandledException('$error');
     }
@@ -43,7 +51,12 @@ class KaycoreAuth {
     required String password,
   }) async {
     try {
-      return UnimplementedError('localSignInWithEmail');
+      final body = <String, Object>{
+        'identifier': identifier,
+        'password': password,
+      };
+
+      return post(environment: environment, path: '/auth/login', body: body);
     } catch (error) {
       UnhandledException('$error');
     }
@@ -52,7 +65,16 @@ class KaycoreAuth {
   Future<dynamic> localSignInWithPhoneNumber(
       {required String identifier}) async {
     try {
-      return UnimplementedError('localSignInWithPhoneNumber');
+      final body = <String, Object>{
+        'identifier': identifier,
+        'password': 'randompassword',
+      };
+
+      return post(
+        environment: environment,
+        path: '/auth/login',
+        body: body,
+      );
     } catch (error) {
       UnhandledException('$error');
     }
@@ -93,11 +115,24 @@ class KaycoreAuth {
     required String otp,
   }) async {
     try {
-      return UnimplementedError('resetPassword');
+      final body = <String, Object>{
+        'identifier': identifier,
+        'password': password,
+        'token': otp,
+      };
+
+      return post(
+        environment: environment,
+        path: '/auth/password/reset',
+        body: body,
+      );
     } catch (error) {
       UnhandledException('$error');
     }
   }
+
+  @override
+  String toString() => 'KaycoreAuth($environment)';
 
   Future<dynamic> verifyAccount({
     required String identifier,
