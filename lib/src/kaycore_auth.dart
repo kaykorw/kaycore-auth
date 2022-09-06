@@ -40,6 +40,7 @@ class KaycoreAuth {
   /// in Kayko and generate a business code for it.
   /// ```dart
   /// createBusiness(
+  ///   idempotencyKey: 'c9229d1a-778c-4353-aed2-74dd85879eaa',
   ///   companyName: 'Kayko',
   ///   category: 'ICT',
   ///   revenueAmount: 100.00,
@@ -47,6 +48,7 @@ class KaycoreAuth {
   /// );
   /// ```
   Future<dynamic> createBusiness({
+    required String idempotencyKey,
     required String userId,
     required String companyName,
     required String category,
@@ -55,11 +57,12 @@ class KaycoreAuth {
   }) async {
     try {
       final body = <String, Object>{
+        'idempotency_key': idempotencyKey,
         'user': userId,
         'name': companyName,
         'category': category,
-        'revenueAmount': revenueAmount ?? 0,
-        'revenueCurrency': revenueCurrency ?? 'RWF',
+        'revenue_amount': revenueAmount ?? 0,
+        'revenue_currency': revenueCurrency ?? 'RWF',
       };
 
       return post(
@@ -77,11 +80,18 @@ class KaycoreAuth {
   /// for the user and send it on their email to allow
   /// them use it when setting up a new password.
   /// ```dart
-  /// forgetPassword(identifier: 'email@email.ext');
+  /// forgetPassword(
+  ///   idempotencyKey: 'c9229d1a-778c-4353-aed2-74dd85879eaa',
+  ///   identifier: 'email@email.ext',
+  /// );
   /// ```
-  Future<dynamic> forgetPassword({required String identifier}) async {
+  Future<dynamic> forgetPassword({
+    required String idempotencyKey,
+    required String identifier,
+  }) async {
     try {
       final body = <String, Object>{
+        'idempotency_key': idempotencyKey,
         'identifier': identifier,
       };
 
@@ -155,6 +165,7 @@ class KaycoreAuth {
   /// and return a JWT as well as logged in user details.
   /// ```dart
   /// localSignUpWithEmail(
+  ///   idempotencyKey: 'c9229d1a-778c-4353-aed2-74dd85879eaa',
   ///   identifier: 'email@email.ext',
   ///   password: '123123',
   ///   firstname: 'Keza',
@@ -164,6 +175,7 @@ class KaycoreAuth {
   /// );
   /// ```
   Future<dynamic> localSignUpWithEmail({
+    required String idempotencyKey,
     required String identifier,
     required String password,
     required String firstname,
@@ -173,12 +185,13 @@ class KaycoreAuth {
   }) async {
     try {
       final body = <String, Object>{
+        'idempotency_key': idempotencyKey,
         'identifier': identifier,
         'password': password,
         'firstname': firstname,
         'lastname': lastname,
-        'country': country ?? '',
-        'phoneNumber': phoneNumber ?? '',
+        'country_code': country ?? '',
+        'phone_number': phoneNumber ?? '',
         'mode': 'email',
       };
 
@@ -198,6 +211,7 @@ class KaycoreAuth {
   /// on the user phone number.
   /// ```dart
   /// localSignUpWithPhoneNumber(
+  ///   idempotencyKey: 'c9229d1a-778c-4353-aed2-74dd85879eaa',
   ///   identifier: '2507********',
   ///   firstname: 'Keza',
   ///   lastname: 'Majyambere',
@@ -206,6 +220,7 @@ class KaycoreAuth {
   /// );
   /// ```
   Future<dynamic> localSignUpWithPhoneNumber({
+    required String idempotencyKey,
     required String identifier,
     required String firstname,
     required String lastname,
@@ -214,11 +229,12 @@ class KaycoreAuth {
   }) async {
     try {
       final body = <String, Object>{
+        'idempotency_key': idempotencyKey,
         'identifier': identifier,
         'firstname': firstname,
         'lastname': lastname,
-        'country': country ?? '',
-        'phoneNumber': phoneNumber ?? '',
+        'country_code': country ?? '',
+        'phone_number': phoneNumber ?? '',
         'mode': 'phone',
       };
 
@@ -238,18 +254,21 @@ class KaycoreAuth {
   /// the received OTP if it matches the one generated from the server.
   /// ```dart
   /// resetPassword(
+  ///   idempotencyKey: 'c9229d1a-778c-4353-aed2-74dd85879eaa',
   ///   identifier: 'email@email.ext',
   ///   password: '123123',
   ///   otp: '123123',
   /// );
   /// ```
   Future<dynamic> resetPassword({
+    required String idempotencyKey,
     required String identifier,
     required String password,
     required String otp,
   }) async {
     try {
       final body = <String, Object>{
+        'idempotency_key': idempotencyKey,
         'identifier': identifier,
         'password': password,
         'token': otp,
