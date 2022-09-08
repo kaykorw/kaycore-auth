@@ -8,7 +8,7 @@ class HttpFailure extends ApiError {
   HttpFailure({required this.statusCode, String? message}) : super(message);
 
   @override
-  String toString() => 'Http Status: $statusCode \nHttp Error: $message';
+  String toString() => 'Status: $statusCode \nError: $message';
 }
 
 class JsonDecodeException extends ApiError {

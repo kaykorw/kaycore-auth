@@ -86,7 +86,6 @@ Future<Object> post({
 
     return _decodeBody(response);
   } catch (error) {
-    print('SHIT');
     throw UnhandledException('$error');
   }
 }
@@ -112,15 +111,18 @@ Future<Object> put({
 }
 
 void _checkStatusCode(http.Response response) {
-  switch (response.statusCode) {
+  final data = jsonDecode(response.body);
+  final message = data['errors']['message'];
+
+  switch (data['errors']['status']) {
     case 400:
-      throw HttpFailure(statusCode: 400, message: 'Bad Request');
+      throw HttpFailure(statusCode: 400, message: message);
     case 401:
-      throw HttpFailure(statusCode: 401, message: 'Unauthorized');
+      throw HttpFailure(statusCode: 401, message: message);
     case 404:
-      throw HttpFailure(statusCode: 404, message: 'Not Found');
+      throw HttpFailure(statusCode: 404, message: message);
     case 500:
-      throw HttpFailure(statusCode: 500, message: 'Server Error');
+      throw HttpFailure(statusCode: 500, message: message);
   }
 }
 
