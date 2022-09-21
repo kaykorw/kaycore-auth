@@ -61,8 +61,8 @@ class KaycoreAuth {
         'user': userId,
         'name': companyName,
         'category': category,
-        'revenue_amount': revenueAmount ?? 0.0.toString(),
-        'revenue_currency': revenueCurrency ?? 'RWF',
+        'amount': revenueAmount ?? 0.0.toString(),
+        'currency': revenueCurrency ?? 'RWF',
       };
 
       return post(
