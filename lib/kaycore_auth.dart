@@ -23,8 +23,6 @@ Future<Object> delete({
 
     response = await client.delete(url, body: body, headers: headers);
 
-    _checkStatusCode(response);
-
     return _decodeBody(response);
   } catch (error) {
     throw UnhandledException('$error');
@@ -41,8 +39,6 @@ Future<Object> get({
     final url = Uri.https(environment.authority, path);
     late final http.Response response;
     response = await client.get(url, headers: headers);
-
-    _checkStatusCode(response);
 
     return _decodeBody(response);
   } catch (error) {
@@ -62,8 +58,6 @@ Future<Object> patch({
     late final http.Response response;
     response = await client.patch(url, body: body, headers: headers);
 
-    _checkStatusCode(response);
-
     return _decodeBody(response);
   } catch (error) {
     throw UnhandledException('$error');
@@ -81,8 +75,6 @@ Future<Object> post({
     final url = Uri.https(environment.authority, path);
     late final http.Response response;
     response = await client.post(url, body: body, headers: headers);
-
-    _checkStatusCode(response);
 
     return _decodeBody(response);
   } catch (error) {
@@ -102,27 +94,9 @@ Future<Object> put({
     late final http.Response response;
     response = await client.put(url, body: body, headers: headers);
 
-    _checkStatusCode(response);
-
     return _decodeBody(response);
   } catch (error) {
     throw UnhandledException('$error');
-  }
-}
-
-void _checkStatusCode(http.Response response) {
-  final data = jsonDecode(response.body);
-  final message = data['errors']['message'];
-
-  switch (data['errors']['status']) {
-    case 400:
-      throw HttpFailure(statusCode: 400, message: message);
-    case 401:
-      throw HttpFailure(statusCode: 401, message: message);
-    case 404:
-      throw HttpFailure(statusCode: 404, message: message);
-    case 500:
-      throw HttpFailure(statusCode: 500, message: message);
   }
 }
 
